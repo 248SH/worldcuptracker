@@ -16,6 +16,8 @@
     "@fontsource/roboto": "^5.2.10",
     "@mui/icons-material": "^9.1.0",
     "@mui/material": "^9.1.0",
+    "@mui/x-date-pickers": "^9.5.0",
+    "dayjs": "^1.11.21",
     "radix-ui": "^1.5.0",
     "react": "^19.2.6",
     "react-datepicker": "^9.1.0",

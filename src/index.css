@@ -1,5 +1,6 @@
 :root {
     --dark-black: #13212Aff;
+    --dark-black-fade: rgba(19, 33, 42, 0.5);
     --light-bronze: #cf995fff;
     --dark-blue: #094d92ff;
     --light-blue: #048BA8ff;
@@ -11,8 +12,30 @@
 body, #root {
     background-color: var(--dark-black);
     color: #fff;
-}
-
-#root {
     height: 100vh;
 }
+
+.MuiPickersOutlinedInput-root {
+  color: white;
+}
+
+.MuiPickersOutlinedInput-notchedOutline {
+  border-color: white !important;
+}
+
+.MuiPickersOutlinedInput-root:hover .MuiPickersOutlinedInput-notchedOutline {
+  border-color: var(--light-green) !important;
+}
+
+.MuiPickersSectionList-sectionContent {
+  color: white;
+}
+
+.MuiPickersSectionList-sectionSeparator {
+  color: white;
+}
+
+.MuiInputAdornment-root .MuiIconButton-root {
+  color: white;
+}
+

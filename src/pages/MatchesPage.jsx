@@ -1,12 +1,20 @@
 import MatchCard from '../components/MatchCard'
 import { useEffect, useState } from 'react'
-import DatePicker from 'react-datepicker'
 import Typography from '@mui/material/Typography'
-import 'react-datepicker/dist/react-datepicker.css'
-
+import useMediaQuery from '@mui/material/useMediaQuery'
+import PageHeader from '../components/PageHeader'
+import PageContainer from '../components/PageContainer'
+import TextField from '@mui/material/TextField'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import dayjs from 'dayjs'
 
 const MatchesPage = () => {
 
+  const isMobile = useMediaQuery('(max-width: 600px)')
   const [matches, setMatches] = useState([])
   const [rounds, setRounds] = useState([])
   const [selectedDate, setSelectedDate] = useState(null)
@@ -36,8 +44,8 @@ const MatchesPage = () => {
     )
     .filter(match => selectedRound ? match.round === selectedRound : true)
     .filter(match => selectedDate
-      ? match.date === `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
-      : true)
+  ? match.date === dayjs(selectedDate).format('YYYY-MM-DD')
+  : true)
 
   const groupedMatches = filteredMatches.reduce((acc, match) => {
     if (!acc[match.round]) acc[match.round] = []
@@ -46,38 +54,36 @@ const MatchesPage = () => {
   }, {})
 
   return (
-    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '16px' }}>
+    <PageContainer>
+      <PageHeader title="Matches" subtitle="Browse fixtures by round, date, or search for individual teams." />
 
-      <Typography variant="h4" component="h1" gutterBottom>
-        Matches
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-        Browse fixtures by round, date, or team.
-      </Typography>
-
-      <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', flexWrap: 'wrap' }}>
-        <input
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <TextField
+          size="small"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search matches..."
-          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+          variant="outlined"
         />
-        <select
-          value={selectedRound}
-          onChange={(e) => setSelectedRound(e.target.value)}
-          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
-        >
-          <option value="">All Rounds</option>
-          {rounds.map((round, index) => (
-            <option key={index} value={round}>{round}</option>
-          ))}
-        </select>
+        <FormControl size="small" sx={{ minWidth: 150 }}>
+          <InputLabel>Round</InputLabel>
+          <Select
+            value={selectedRound}
+            onChange={(e) => setSelectedRound(e.target.value)}
+            label="Round"
+          >
+            <MenuItem value="">All Rounds</MenuItem>
+            {rounds.map((round, index) => (
+              <MenuItem key={index} value={round}>{round}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <DatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          isClearable
-          placeholderText="Select a match date"
-        />
+  value={selectedDate}
+  onChange={(date) => setSelectedDate(date)}
+  slotProps={{ textField: { size: 'small' }, onClick: (e) => e.currentTarget.querySelector('input').click() }}
+  format="dd-MM-yyyy"
+/>
       </div>
 
       {Object.entries(groupedMatches).map(([round, roundMatches]) => (
@@ -87,7 +93,7 @@ const MatchesPage = () => {
           </Typography>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
             {roundMatches.map((match, index) => (
-              <div key={index} style={{ width: '280px' }}>
+              <div key={index} style={{ width: isMobile ? '100%' : '35%' }}>
                 <MatchCard {...match} />
               </div>
             ))}
@@ -95,7 +101,7 @@ const MatchesPage = () => {
         </div>
       ))}
 
-    </div>
+    </PageContainer>
   )
 }
 

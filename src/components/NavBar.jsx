@@ -8,12 +8,14 @@ const NavBar = () => {
     return (
         <AppBar position="static" sx={{ backgroundColor: 'var(--dark-blue)' }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="h6" fontWeight="bold">
+                <Typography variant="h4" fontWeight="bold">
                     World Cup 2026
                 </Typography>
                 <div>
                     <Button color="inherit" component={Link} to="/">Matchday List</Button>
                     <Button color="inherit" component={Link} to="/teams">Teams</Button>
+                    <Button color="inherit" component={Link} to="/groups">Group Standings</Button>
+                    <Button color="inherit" component={Link} to="/standings">Knockout Stages</Button>
                 </div>
             </Toolbar>
         </AppBar>

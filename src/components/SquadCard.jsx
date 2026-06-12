@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import teamNameToCountryCode from '../lib/teamNameToCountryCode'
-import useMediaQuery from '@mui/material/useMediaQuery'
 
 const getFlag = (teamName) => {
     const code = teamNameToCountryCode[teamName]
@@ -15,9 +14,7 @@ const getFlag = (teamName) => {
     )
 }
 
-const TeamCard = ({ name, fifa_code, group, confed }) => {
-    const isMobile = useMediaQuery('(max-width: 600px)')
-
+const SquadCard = ({ name, fifa_code, group }) => {
     return (
         <Box sx={{
             backgroundColor: 'var(--light-green)',
@@ -25,7 +22,6 @@ const TeamCard = ({ name, fifa_code, group, confed }) => {
             border: '5px solid white',
             borderRadius: '10px',
             padding: '16px',
-            width: isMobile ? '80vw' : '20vw',
             textAlign: 'center',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
         }}>
@@ -36,16 +32,13 @@ const TeamCard = ({ name, fifa_code, group, confed }) => {
                 {name}
             </Typography>
             <Typography variant="body2" mb={0.5} sx={{ color: 'var(--light-green)' }}>
-                {confed}
+                {fifa_code}
             </Typography>
             <Typography variant="body2" mb={0.5}>
                 Group {group}
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#a0aec0' }}>
-                {fifa_code}
             </Typography>
         </Box>
     )
 }
 
-export default TeamCard
+export default SquadCard

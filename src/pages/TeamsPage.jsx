@@ -1,12 +1,13 @@
 import TeamCard from '../components/TeamCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import InputBase from '@mui/material/InputBase'
+import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import Typography from '@mui/material/Typography'
+import PageHeader from '../components/PageHeader'
+import PageContainer from '../components/PageContainer'
 
 const TeamsPage = () => {
 
@@ -27,38 +28,23 @@ const TeamsPage = () => {
     }, [])
 
     return (
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '16px' }}>
-
-            <Typography variant="h4" fontWeight="bold" mb={1}>
-                Teams
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#a0aec0', mb: 3 }}>
-                Browse all 48 qualified nations.
-            </Typography>
+        <PageContainer>
+            <PageHeader title="Teams" subtitle="Browse all 48 qualified nations." />
 
             <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
-                <InputBase
+                <TextField
+                    size="small"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search teams..."
-                    sx={{
-                        backgroundColor: 'white',
-                        borderRadius: '4px',
-                        padding: '4px 8px',
-                        color: 'black',
-                    }}
+                    variant="outlined"
                 />
-                <FormControl sx={{ minWidth: 150 }}>
-                    <InputLabel sx={{ color: 'white' }}>Group</InputLabel>
+                <FormControl size="small" sx={{ minWidth: 150 }}>
+                    <InputLabel>Group</InputLabel>
                     <Select
                         value={selectedGroup}
                         onChange={(e) => setSelectedGroup(e.target.value)}
                         label="Group"
-                        sx={{
-                            color: 'white',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-                            '.MuiSvgIcon-root': { color: 'white' },
-                        }}
                     >
                         <MenuItem value="all">All Groups</MenuItem>
                         {groups.map((group, index) => (
@@ -79,8 +65,7 @@ const TeamsPage = () => {
                     ))
                 }
             </div>
-
-        </div>
+        </PageContainer>
     )
 }
 
