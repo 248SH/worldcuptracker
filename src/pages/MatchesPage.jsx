@@ -87,11 +87,14 @@ const MatchesPage = () => {
       </div>
 
       {Object.entries(groupedMatches).map(([round, roundMatches]) => (
-        <div key={round} style={{ backgroundColor: 'var(--dark-green)', marginBottom: '32px', border: '5px solid white', borderRadius: '15px', padding: '16px' }}>
-          <Typography align="center" variant="h4" component="h2" sx={{ color: 'white', mb: 2 }}>
+        <div key={round} style={{ backgroundColor: 'var(--dark-green)', marginBottom: '50px', border: '5px solid white', borderRadius: '15px', padding: '16px' }}>
+          <Typography align="center" variant="h4" component="h2" sx={{ color: 'white'}}>
             {round}
           </Typography>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+          <Typography align="center" variant="h5" component="h3" sx={{ color: 'white', mb: 2 }}>
+            {dayjs(roundMatches[0].date).format('DD MMM YYYY')}
+          </Typography>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginBottom: '32px' }}>
             {roundMatches.map((match, index) => (
               <div key={index} style={{ width: isMobile ? '100%' : '35%' }}>
                 <MatchCard {...match} />

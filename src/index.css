@@ -12,7 +12,10 @@
 body, #root {
     background-color: var(--dark-black);
     color: #fff;
-    height: 100vh;
+}
+
+#root {
+  min-height: 150vh;
 }
 
 .MuiPickersOutlinedInput-root {

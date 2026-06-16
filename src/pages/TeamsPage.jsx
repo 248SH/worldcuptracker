@@ -54,7 +54,7 @@ const TeamsPage = () => {
                 </FormControl>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '50px', justifyContent: 'center' }}>
                 {teams
                     .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
                     .filter(team => selectedGroup === 'all' ? true : team.group === selectedGroup)

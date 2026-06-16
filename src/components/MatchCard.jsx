@@ -4,28 +4,40 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
+import { baseCard } from '../lib/cardStyles'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import React from 'react'
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import GroupsIcon from '@mui/icons-material/Groups';
+import StadiumIcon from '@mui/icons-material/Stadium';
+
 
 const getFlag = (teamName) => {
   const code = teamNameToCountryCode[teamName]
   if (!code) return null
   return (
     <img
-      src={`https://flagcdn.com/w40/${code}.png`}
+      src={`https://flagcdn.com/${code}.svg`}
       alt={teamName}
-      style={{ width: '40px', height: '27px' }}
+      style={{ width: '60px', height: '40px', objectFit: 'cover', border: '1px solid white', borderRadius: '4px' }}
     />
   )
 }
 
 const MatchCard = ({ round, date, time, team1, team2, group, ground, score, goals1, goals2 }) => {
+  const id = React.useId();
   return (
     <Card sx={{
-      backgroundColor: 'var(--light-green)',
       color: 'white',
-      border: '5px solid white',
-      borderRadius: '10px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
-      height: '100%',
+      ...baseCard,
+      width: '100%',
+      maxWidth: '400px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
     }}>
       <CardContent>
 
@@ -36,45 +48,77 @@ const MatchCard = ({ round, date, time, team1, team2, group, ground, score, goal
 
         {/* Teams and flags */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '40%' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '40%', transition: 'transform 0.3s', ':hover': { cursor: 'pointer', transform: 'scale(1.1)' } }}>
             {getFlag(team1)}
-            <Typography variant="body2" mt={1} align="center">{team1}</Typography>
+            <Typography variant="body3" mt={1} align="center" sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {team1}
+            </Typography>
           </Box>
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="h4" fontWeight="bold">
             {score ? `${score.ft[0]} - ${score.ft[1]}` : 'vs'}
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '40%' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '40%', transition: 'transform 0.3s', ':hover': { cursor: 'pointer', transform: 'scale(1.1)' } }}>
             {getFlag(team2)}
-            <Typography variant="body2" mt={1} align="center">{team2}</Typography>
+            <Typography variant="body3" mt={1} align="center" sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {team2}
+            </Typography>
           </Box>
         </Box>
 
         <Divider sx={{ my: 2, backgroundColor: 'white' }} />
 
         {/* Details */}
-        <Box sx={{ textAlign: 'center', paddingBottom: '8px' }}>
-          <Typography variant="body2">{date} at {time}</Typography>
-          {group && <Typography variant="body2">{group}</Typography>}
-          <Typography variant="body2">{ground}</Typography>
-        </Box>
+        <Box sx={{ width: '75%', textAlign: 'left', marginBottom: '10px',padding: '15px', overflow: 'hidden' }}>
+  <Typography variant="body2" noWrap>
+    <AccessAlarmIcon sx={{ verticalAlign: 'middle', mr: 1 }} /> {time}
+  </Typography>
+  {group && (
+    <Typography variant="body2" noWrap>
+      <GroupsIcon sx={{ verticalAlign: 'middle', mr: 1 }} /> {group}
+    </Typography>
+  )}
+  <Typography variant="body2" noWrap>
+    <StadiumIcon sx={{ verticalAlign: 'middle', mr: 1 }} /> {ground}
+  </Typography>
+</Box>
 
         {/* Goals */}
         {(goals1?.length > 0 || goals2?.length > 0) && (
-  <Box mt={1}
-  sx={{ backgroundColor: 'var(--dark-black-fade)', padding: '8px', borderRadius: '8px' }}>
+          <Accordion disableGutters sx={{
+  backgroundColor: 'rgba(10, 10, 10, 0.5)',
+  color: 'white',
+  boxShadow: 'none',
+  border: '1px solid rgba(255,255,255,0.3)',
+  borderRadius: '4px !important',
+  '&:before': { display: 'none' },
+}}>
+  <AccordionSummary
+  expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
+  sx={{ 
+    minHeight: '36px',
+    padding: '0 8px',
+    '& .MuiAccordionSummary-content': {
+      margin: '6px 0',
+    }
+  }}
+>
+    <Typography variant="body2">Show Goals</Typography>
+  </AccordionSummary>
+  <AccordionDetails>
     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box sx={{ width: '40%', textAlign: 'left' }}>
-        {goals1?.map((g, i) => (
+      <Box sx={{ width: '48%' }}>
+        {goals1?.sort((a, b) => a.minute - b.minute).map((g, i) => (
           <Typography key={i} variant="body2">⚽ {g.name} {g.minute}'</Typography>
         ))}
       </Box>
-      <Box sx={{ width: '40%', textAlign: 'right' }}>
-        {goals2?.map((g, i) => (
+      <Box sx={{ width: '48%', textAlign: 'right' }}>
+        {goals2?.sort((a, b) => a.minute - b.minute).map((g, i) => (
           <Typography key={i} variant="body2">{g.name} {g.minute}' ⚽</Typography>
         ))}
       </Box>
     </Box>
-  </Box>
+  </AccordionDetails>
+</Accordion>
 )}
       </CardContent>
     </Card>
