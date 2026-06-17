@@ -26,7 +26,7 @@ const NavBar = () => {
     const isMobile = useMediaQuery('(max-width: 768px)')
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'var(--dark-blue)' }}>
+        <AppBar position="static" sx={{ backgroundColor: 'var(--dark-grey)', borderBottom: '3px solid var(--gold)' }}>
             <Toolbar sx={{ 
     display: 'flex', 
     justifyContent: 'space-between',
@@ -50,7 +50,7 @@ const NavBar = () => {
                             open={drawerOpen}
                             onClose={() => setDrawerOpen(false)}
                         >
-                            <List sx={{ width: 200, backgroundColor: 'var(--dark-blue)', height: '100%', position: 'relative' }}>
+                            <List sx={{ width: 200, backgroundColor: 'var(--dark-grey)', height: '100%', position: 'relative' }}>
                             <ListItem sx={{ marginBottom: '32px'}}>
                                 <IconButton
                                     aria-label="Close navigation menu"

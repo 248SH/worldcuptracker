@@ -1,12 +1,14 @@
 :root {
-    --dark-black: #13212Aff;
+    --dark-black: #161616ff;
     --dark-black-fade: rgba(19, 33, 42, 0.5);
     --light-bronze: #cf995fff;
+    --dark-grey: #2b2b2bff;
     --dark-blue: #094d92ff;
     --light-blue: #048BA8ff;
     --dark-green: #4f7942ff;
     --light-green: #7bb369ff;
     --dark-red: #CD4631ff;
+    --gold: #DDB967;
 }
 
 header {
@@ -14,12 +16,14 @@ header {
 }
 
 body, #root {
-    background-color: var(--dark-black);
     color: #fff;
+    background-color: var(--dark-black);
 }
 
 #root {
-  min-height: 150vh;
+  min-height: 100vh;
+  background-attachment: fixed;
+  position: relative;
 }
 
 .MuiPickersOutlinedInput-root {
