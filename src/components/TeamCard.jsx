@@ -87,10 +87,10 @@ const TeamCard = ({ name, fifa_code, group, confed, fontSize }) => {
         >
           {name}
         </Typography>
-        <Typography variant="h6" mb={0.5} sx={{ color: "white", fontSize: fontSize || 'clamp(1rem, 2vw, 1.5rem)' }}>
+        <Typography variant="h6" component="p" mb={0.5} sx={{ color: "white", fontSize: fontSize || 'clamp(1rem, 2vw, 1.5rem)' }}>
           Group {group}
         </Typography>
-        <Typography variant="h6" mb={0.5} sx={{ color: "white", fontSize: fontSize || 'clamp(1rem, 2vw, 1.5rem)' }}>
+        <Typography variant="h6" component="p" mb={0.5} sx={{ color: "white", fontSize: fontSize || 'clamp(1rem, 2vw, 1.5rem)' }}>
           {confed}
         </Typography>
       </Box>

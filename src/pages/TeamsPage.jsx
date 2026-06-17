@@ -38,10 +38,13 @@ const TeamsPage = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search teams..."
                     variant="outlined"
+                    inputProps={{ 'aria-label': 'Search teams' }}
                 />
                 <FormControl size="small" sx={{ minWidth: 150 }}>
-                    <InputLabel>Group</InputLabel>
+                    <InputLabel id="group-select-label">Group</InputLabel>
                     <Select
+                        labelId="group-select-label"
+                        id="group-select"
                         value={selectedGroup}
                         onChange={(e) => setSelectedGroup(e.target.value)}
                         label="Group"

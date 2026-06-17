@@ -50,10 +50,10 @@ const PlayerCard = ({ name, number, pos, date_of_birth }) => {
             <Box sx={{marginBottom: '15px'}}>
             {getLogo(pos, isMobile)}
             </Box>
-            <Typography variant="h5" mb={0.5} sx={{ color: 'white' }}>
+            <Typography variant="h5" component="div" mb={0.5} sx={{ color: 'white' }}>
                 #{number}
             </Typography>
-            <Typography variant="h4" fontWeight="bold" mb={1}>
+            <Typography variant="h4" component="h3" fontWeight="bold" mb={1}>
                 {name}
             </Typography>
             <Typography variant="body2" mb={0.5} sx={{ color: 'white' }}>

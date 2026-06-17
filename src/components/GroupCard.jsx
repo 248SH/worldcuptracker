@@ -29,7 +29,7 @@ const GroupCard = ({ groupName, teams }) => {
             marginBottom: '50px',
             ...baseCard,
             }}>
-        <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: '16px', color: 'white' }}>
+        <Typography variant="h4" component="h2" fontWeight="bold" sx={{ marginBottom: '16px', color: 'white' }}>
             {groupName}
         </Typography>
         <TableContainer sx={{ overflowX: 'auto' }}>

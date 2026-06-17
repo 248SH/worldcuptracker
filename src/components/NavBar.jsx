@@ -32,7 +32,7 @@ const NavBar = () => {
     justifyContent: 'space-between',
     px: { xs: 1, sm: 2 }  // smaller padding on mobile
 }}>
-                <Typography variant="h4" fontWeight="bold">
+                <Typography variant="h4" component="div" fontWeight="bold">
                     World Cup 2026 Tracker
                 </Typography>
 
@@ -40,6 +40,7 @@ const NavBar = () => {
                     <>
                         <IconButton
                             color="inherit"
+                            aria-label="Open navigation menu"
                             onClick={() => setDrawerOpen(true)}
                         >
                             <MenuIcon />
@@ -52,6 +53,7 @@ const NavBar = () => {
                             <List sx={{ width: 200, backgroundColor: 'var(--dark-blue)', height: '100%', position: 'relative' }}>
                             <ListItem sx={{ marginBottom: '32px'}}>
                                 <IconButton
+                                    aria-label="Close navigation menu"
                                     onClick={() => setDrawerOpen(false)}
                                     sx={{ position: 'absolute', top: 0, right: 0, color: 'white' }}
                                 >
