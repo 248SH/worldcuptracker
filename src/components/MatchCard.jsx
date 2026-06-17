@@ -83,12 +83,15 @@ const MatchCard = ({
               ":hover": { cursor: "pointer", transform: "scale(1.1)" },
             }}
           >
-            <Link
-              to={`/team-details/${teamNameToFifaCode[team1]}`}
-              style={{ textDecoration: "none" }}
-            >
-              {getFlag(team1)}
-            </Link>
+            {getFlag(team1) && (
+              <Link
+                to={`/team-details/${teamNameToFifaCode[team1]}`}
+                style={{ textDecoration: "none" }}
+                aria-label={team1}
+              >
+                {getFlag(team1)}
+              </Link>
+            )}
             <Typography
               variant="body3"
               mt={1}
@@ -115,12 +118,15 @@ const MatchCard = ({
               ":hover": { cursor: "pointer", transform: "scale(1.1)" },
             }}
           >
-            <Link
-              to={`/team-details/${teamNameToFifaCode[team2]}`}
-              style={{ textDecoration: "none" }}
-            >
-              {getFlag(team2)}
-            </Link>
+            {getFlag(team2) && (
+              <Link
+                to={`/team-details/${teamNameToFifaCode[team2]}`}
+                style={{ textDecoration: "none" }}
+                aria-label={team2}
+              >
+                {getFlag(team2)}
+              </Link>
+            )}
             <Typography
               variant="body3"
               mt={1}

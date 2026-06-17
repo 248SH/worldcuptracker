@@ -63,10 +63,13 @@ const MatchesPage = () => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search matches..."
           variant="outlined"
+          inputProps={{ 'aria-label': 'Search matches' }}
         />
         <FormControl size="small" sx={{ minWidth: 150 }}>
-          <InputLabel>Round</InputLabel>
+          <InputLabel id="round-select-label">Round</InputLabel>
           <Select
+            labelId="round-select-label"
+            id="round-select"
             value={selectedRound}
             onChange={(e) => { setSelectedRound(e.target.value)
               setSelectedDate(null) }}
@@ -84,7 +87,8 @@ const MatchesPage = () => {
     setSelectedDate(date)
     setSelectedRound('')
 }}
-  slotProps={{ textField: { size: 'small' }, onClick: (e) => e.currentTarget.querySelector('input').click() }}
+  label="Filter by date"
+  slotProps={{ textField: { size: 'small', inputProps: { 'aria-label': 'Filter by date' } }, onClick: (e) => e.currentTarget.querySelector('input').click() }}
   format="dd-MM-yyyy"
 />
       </div>
