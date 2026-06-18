@@ -1,29 +1,18 @@
 :root {
-    --dark-black: #161616ff;
+    --dark-black: #13212Aff;
     --dark-black-fade: rgba(19, 33, 42, 0.5);
     --light-bronze: #cf995fff;
-    --dark-grey: #2b2b2bff;
     --dark-blue: #094d92ff;
     --light-blue: #048BA8ff;
     --dark-green: #4f7942ff;
     --light-green: #7bb369ff;
     --dark-red: #CD4631ff;
-    --gold: #DDB967;
-}
-
-header {
-    overflow-x: hidden;
 }
 
 body, #root {
-    color: #fff;
     background-color: var(--dark-black);
-}
-
-#root {
-  min-height: 100vh;
-  background-attachment: fixed;
-  position: relative;
+    color: #fff;
+    height: 100vh;
 }
 
 .MuiPickersOutlinedInput-root {
@@ -48,13 +37,5 @@ body, #root {
 
 .MuiInputAdornment-root .MuiIconButton-root {
   color: white;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
 }
 

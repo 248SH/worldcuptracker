@@ -4,7 +4,7 @@ import { Box, Divider } from '@mui/material'
 const PageHeader = ({title, subtitle}) => {
     return (
         <Box sx={{ textAlign: 'left', mb: 3, width: '100%'}}>
-        <Typography variant="h4" component="h1" mb={1}>
+        <Typography variant="h4" mb={1}>
             {title}
         </Typography>
         {subtitle && (

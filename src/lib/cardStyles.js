@@ -10,7 +10,7 @@ export const shieldCard = {
                    borderRadius: '20px 20px 100px 100px',
                    display: 'flex',
                    flexDirection: 'column',
-                   width: 'clamp(180px, 45vw, 250px)',
+                   width: 'clamp(250px, 45vw, 250px)',
                    height: 'clamp(300px, 40vw, 325px)',
                    transform: 'scale(0.80)',
                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.5)',

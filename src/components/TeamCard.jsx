@@ -24,8 +24,8 @@ const TeamCard = ({ name, group, confed, fontSize }) => {
         borderRadius: "20px 20px 75px 75px",
         display: "flex",
         flexDirection: "column",
-        width: "clamp(280px, 45vw, 300px)",
-        height: "clamp(300px, 40vw, 450px)",
+        width: "clamp(350px, 45vw, 300px)",
+        height: "clamp(400px, 40vw, 450px)",
         transform: "scale(0.85)",
         boxShadow: "5px 4px 8px rgba(0, 0, 0, 0.5)",
         transition: "border-color 0.3s ease, transform 0.3s ease",
@@ -77,7 +77,7 @@ const TeamCard = ({ name, group, confed, fontSize }) => {
               colours.primary === "#000000"
                 ? colours.secondary
                 : colours.primary,
-            fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+            fontSize: "clamp(3rem, 5vw, 3.5rem)",
             lineHeight: 1,
             fontFamily: "Bebas Neue, sans-serif",
           }}

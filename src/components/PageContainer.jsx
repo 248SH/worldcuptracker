@@ -1,12 +1,11 @@
 const PageContainer = ({ children }) => {
     return (
-        <main style={{ 
+        <div style={{ 
             maxWidth: '1200px', 
             margin: '0 auto', 
-            padding: 'clamp(8px, 4vw, 32px)'
-        }}>
+            padding: '16px' }}>
             {children}
-        </main>
+        </div>
     )
 }
 
