@@ -38,10 +38,13 @@ const TeamsPage = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search teams..."
                     variant="outlined"
+                    inputProps={{ 'aria-label': 'Search teams' }}
                 />
                 <FormControl size="small" sx={{ minWidth: 150 }}>
-                    <InputLabel>Group</InputLabel>
+                    <InputLabel id="group-select-label">Group</InputLabel>
                     <Select
+                        labelId="group-select-label"
+                        id="group-select"
                         value={selectedGroup}
                         onChange={(e) => setSelectedGroup(e.target.value)}
                         label="Group"
@@ -54,7 +57,7 @@ const TeamsPage = () => {
                 </FormControl>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '50px', justifyContent: 'center' }}>
                 {teams
                     .filter(team => team.name.toLowerCase().includes(search.toLowerCase()))
                     .filter(team => selectedGroup === 'all' ? true : team.group === selectedGroup)
